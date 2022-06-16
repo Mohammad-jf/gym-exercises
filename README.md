@@ -1,5 +1,5 @@
 # Getting Started with Create React App
-!important : for running app you should register in rapid api/exercisesdb api and use your api key in your request options.
+!important : for running app you should register in rapid api/exercisesdb api and use your api key in src/utils/fetchData and put it in api key field in exercise options
 
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
