@@ -26,11 +26,10 @@ const HeroBanner = () => {
       <Button variant='contained' color='error' sx={{backgroundColor:"#ff2625",padding:'10px'}}>Explore Exercises</Button>
 
       <Typography
-       fontWeight={600}
-       fontSize='200px'
-       color='#ff2625'k
-       sx={{opacity:0.1,display:{lg:'block' ,xs:'none'}}} 
-        >
+        fontWeight={600}
+        fontSize='200px'
+        color='#ff2625'
+        sx={{opacity:0.1,display:{lg:'block' ,xs:'none'}}}>
         Exercise
       </Typography>
       
