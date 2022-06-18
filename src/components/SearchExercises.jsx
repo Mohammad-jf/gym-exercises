@@ -3,14 +3,17 @@ import {Button,Stack,Box,TextField,Typography} from '@mui/material';
 import { exerciseOptions } from '../utils/fetchData';
 import { fetchData } from '../utils/fetchData';
 import HorizontalScrollbar from './HorizontalScrollbar';
+import { useDispatch } from 'react-redux';
+import {setExercises} from '../redux/exercisesSlice'
 
 
 
 
-
-const SearchExercises = ({bodyPart,setExercises,setBodyPart}) => {
+const SearchExercises = () => {
   const [search,setSearch] = useState('');
   const [bodyParts,setBodyParts] = useState([]);
+
+  const dispatch = useDispatch();
 
 
   useEffect(()=>{
@@ -33,7 +36,7 @@ const SearchExercises = ({bodyPart,setExercises,setBodyPart}) => {
         ||exercise.equipment.toLowerCase().includes(search)
         ||exercise.bodyPart.toLowerCase().includes(search)
         );
-        setExercises(searchedExercises);
+        dispatch(setExercises(searchedExercises));
         console.log(searchedExercises)
 
     }
@@ -75,7 +78,7 @@ const SearchExercises = ({bodyPart,setExercises,setBodyPart}) => {
 
       <Box sx={{position:'relative',width:'100%',p:'20px'}}>
         
-        <HorizontalScrollbar data={bodyParts} bodyPart={bodyPart} setBodyPart={setBodyPart}/>
+        <HorizontalScrollbar data={bodyParts}/>
         
       </Box>
 

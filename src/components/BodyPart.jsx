@@ -1,11 +1,15 @@
 import React from 'react'
 import {Stack,Typography } from '@mui/material'
 import Icon from '../assets/icons/gym.png'
+import {setBodyPart} from '../redux/exercisesSlice'
+import { useDispatch, useSelector } from 'react-redux/es/exports'
 
 
 
+const BodyPart = ({item}) => {
+  const dispatch = useDispatch();
+  const bodyPart = useSelector(state => state.exercises.bodyPart)
 
-const BodyPart = ({item,bodyPart,setBodyPart}) => {
   return (
    <Stack type='button'
        alignItems='center'
@@ -19,7 +23,9 @@ const BodyPart = ({item,bodyPart,setBodyPart}) => {
         height: '240px',
         cursor:'pointer',
         gap:'47px'}
-        } onClick={()=>{setBodyPart(item);window.scrollTo({top:1800,left:100,behavior:'smooth'})}}>
+        } 
+        onClick={()=>{dispatch(setBodyPart(item));
+        window.scrollTo({top:1800,left:100,behavior:'smooth'})}}>
 
       
      <img src={Icon} alt="dumbell" style={{width:'40px',height:'40px'}}/>
