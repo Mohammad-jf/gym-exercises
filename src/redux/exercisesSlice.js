@@ -1,25 +1,23 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-
-
 const exercisesSlice = createSlice({
-  name: 'exercises',
+  name: "exercises",
 
-  initialState : {
-    exercises : [],
-    bodyPart: '',
+  initialState: {
+    exercises: [],
+    bodyPart: "",
   },
 
   reducers: {
-    setExercises :(state,action)=>{
-        state.exercises = action.payload
+    setExercises: (state, action) => {
+      state.exercises = action.payload;
     },
 
-    setBodyPart : (state,action)=>{
-      state.bodyPart = action.payload
-    }
+    setBodyPart: (state, action) => {
+      state.bodyPart = action.payload;
+    },
   },
-})
+});
 
-export const {setExercises,setBodyPart} = exercisesSlice.actions
-export default exercisesSlice.reducer
+export const { setExercises, setBodyPart } = exercisesSlice.actions;
+export default exercisesSlice.reducer;
