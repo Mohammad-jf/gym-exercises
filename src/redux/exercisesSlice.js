@@ -6,6 +6,8 @@ const exercisesSlice = createSlice({
   initialState: {
     exercises: [],
     bodyPart: "",
+    exerciseDetail:{},
+    exerciseVideos:[],
   },
 
   reducers: {
@@ -16,8 +18,15 @@ const exercisesSlice = createSlice({
     setBodyPart: (state, action) => {
       state.bodyPart = action.payload;
     },
+
+    setExerciseDetail:(state,action)=>{
+      state.exerciseDetail = action.payload;
+    },
+    setExerciseVideos:(state,action)=>{
+      state.exerciseVideos = action.payload;
+    }
   },
 });
 
-export const { setExercises, setBodyPart } = exercisesSlice.actions;
+export const { setExercises, setBodyPart,setExerciseDetail,setExerciseVideos } = exercisesSlice.actions;
 export default exercisesSlice.reducer;

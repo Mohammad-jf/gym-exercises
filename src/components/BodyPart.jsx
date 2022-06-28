@@ -4,9 +4,10 @@ import Icon from "../assets/icons/gym.png";
 import { setBodyPart } from "../redux/exercisesSlice";
 import { useDispatch, useSelector } from "react-redux/es/exports";
 
-const BodyPart = ({ item, setSearch, handleSearch }) => {
+const BodyPart = ({ item}) => {
   const dispatch = useDispatch();
   const bodyPart = useSelector((state) => state.exercises.bodyPart);
+
 
   return (
     <Stack
@@ -25,9 +26,7 @@ const BodyPart = ({ item, setSearch, handleSearch }) => {
       }}
       onClick={() => {
         dispatch(setBodyPart(item));
-        setSearch(bodyPart)
-        handleSearch();
-        window.scrollTo({ top: 1800, left: 100, behavior: "smooth" });
+        window.scrollTo({ top: 1800, left: 100, });
       }}
     >
       <img src={Icon} alt="dumbell" style={{ width: "40px", height: "40px" }} />

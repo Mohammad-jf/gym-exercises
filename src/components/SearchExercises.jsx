@@ -11,6 +11,7 @@ const SearchExercises = () => {
   const [bodyParts, setBodyParts] = useState([]);
   const dispatch = useDispatch();
 
+
   useEffect(() => {
     const fetchBodyPartsData = async () => {
       const bodyPartsData = await fetchData(
@@ -22,6 +23,7 @@ const SearchExercises = () => {
     };
     fetchBodyPartsData();
   }, []);
+
 
   const handleSearch = async () => {
     if (search) {
@@ -37,9 +39,10 @@ const SearchExercises = () => {
           exercise.bodyPart.toLowerCase().includes(search)
       );
       dispatch(setExercises(searchedExercises));
-      console.log(searchedExercises);
     }
   };
+
+  
 
   return (
     <Stack alignItems="center" mt="37px" justifyContent="center" p="20px">
@@ -88,7 +91,7 @@ const SearchExercises = () => {
       </Box>
 
       <Box sx={{ position: "relative", width: "100%", p: "20px" }}>
-        <HorizontalScrollbar data={bodyParts} setSearch={setSearch} handleSearch={handleSearch} />
+        <HorizontalScrollbar data={bodyParts}  />
       </Box>
     </Stack>
   );

@@ -8,18 +8,47 @@ import ExerciseCard from "./ExerciseCard";
 
 
 const Exercises = () => {
+  const dispatch = useDispatch();
+  // states
   const [currentPage, setCurrentPage] = useState(1);
   const exercises = useSelector((state) => state.exercises.exercises);
+  const bodyPart = useSelector((state) => state.exercises.bodyPart);
+
+  //pagination calculation
   const exercisesPerPage = 9;
   const indexOfLastExercise = currentPage * exercisesPerPage;
   const indexOfFirstExercise = indexOfLastExercise - exercisesPerPage;
   const currentExercises = exercises.slice(indexOfFirstExercise, indexOfLastExercise);
-
   const paginate = (e, value) => {
     setCurrentPage(value);
     window.scrollTo({ top: 1700, behavior: "smooth" });
-
   }
+
+
+
+  useEffect(() => {
+    const fetchExerciseData = async () => {
+      let exercisesData = [];
+      exercisesData = await fetchData(
+        "https://exercisedb.p.rapidapi.com/exercises",
+        exerciseOptions
+      );
+
+      if (bodyPart === "") {
+        dispatch(setExercises(exercisesData));
+      } else {
+        const selectedExercises = exercisesData.filter(
+          (exercise) =>
+            exercise.name.toLowerCase().includes(bodyPart) ||
+            exercise.target.toLowerCase().includes(bodyPart) ||
+            exercise.equipment.toLowerCase().includes(bodyPart) ||
+            exercise.bodyPart.toLowerCase().includes(bodyPart)
+        );
+        dispatch(setExercises(selectedExercises));
+      }
+    }
+    fetchExerciseData();
+  }, [bodyPart])
 
 
 
@@ -30,11 +59,14 @@ const Exercises = () => {
       mt='50px'
       p="20px"
     >
-      <Typography variant="h3" mb='46px'>
-        Showing Results
+      <Typography variant="h3" mb='60px'>
+       Explore Exercises
       </Typography>
 
-      <Stack direction='row' sx={{ gap: { lg: '110px', xs: "50px" } }}
+
+
+      {/* rendering items */}
+      <Stack direction='row' sx={{ gap: { lg: '80px', xs: "50px" } }}
         flexWrap='wrap' justifyContent='center'
       >
         {
@@ -44,6 +76,8 @@ const Exercises = () => {
         }
       </Stack>
 
+
+      {/* pagination */}
       <Stack mt='100px' alignItems='center'>
         {exercises.length > exercisesPerPage && (
           <Pagination
