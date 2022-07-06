@@ -42,7 +42,7 @@ const SearchExercises = () => {
     }
   };
 
-  
+
 
   return (
     <Stack alignItems="center" mt="37px" justifyContent="center" p="20px">
@@ -91,7 +91,7 @@ const SearchExercises = () => {
       </Box>
 
       <Box sx={{ position: "relative", width: "100%", p: "20px" }}>
-        <HorizontalScrollbar data={bodyParts}  />
+        <HorizontalScrollbar data={bodyParts} isBodyPart />
       </Box>
     </Stack>
   );

@@ -7,7 +7,7 @@ import ExercisesVideos from './../components/ExercisesVideos';
 import SimilarExercises from './../components/SimilarExercises';
 import { useDispatch } from 'react-redux/es/exports';
 import { useSelector } from 'react-redux'
-import { setExerciseDetail, setExerciseVideos } from "../redux/exercisesSlice";
+import { setEquipmentMuscleData, setExerciseDetail, setExerciseVideos, setTargetMuscleData } from "../redux/exercisesSlice";
 
 
 const ExerciseDetail = () => {
@@ -25,6 +25,14 @@ const ExerciseDetail = () => {
       // related videos
       const exerciseVideoData = await fetchData(`https://youtube-search-and-download.p.rapidapi.com/search?query=${exerciseDetailData.name}`, youtubeOptions);
       dispatch(setExerciseVideos(exerciseVideoData));
+
+      // similar exercises
+      const targetMuscleExerciseData = await fetchData(`https://exercisedb.p.rapidapi.com/exercises/target/${exerciseDetailData.target}`,exerciseOptions);
+      dispatch(setTargetMuscleData(targetMuscleExerciseData))
+
+      const equipmentMuscleExerciseData = await fetchData(`https://exercisedb.p.rapidapi.com/exercises/equipment/${exerciseDetailData.equipment}`,exerciseOptions);
+      dispatch(setEquipmentMuscleData(equipmentMuscleExerciseData));
+    
     }
 
     fetchExercisesData();

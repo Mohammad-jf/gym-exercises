@@ -4,7 +4,7 @@ import Icon from "../assets/icons/gym.png";
 import { setBodyPart } from "../redux/exercisesSlice";
 import { useDispatch, useSelector } from "react-redux/es/exports";
 
-const BodyPart = ({ item}) => {
+const BodyPart = ({ item }) => {
   const dispatch = useDispatch();
   const bodyPart = useSelector((state) => state.exercises.bodyPart);
 

@@ -60,7 +60,7 @@ const Exercises = () => {
       p="20px"
     >
       <Typography variant="h3" mb='60px'>
-       Explore Exercises
+        Explore Exercises
       </Typography>
 
 

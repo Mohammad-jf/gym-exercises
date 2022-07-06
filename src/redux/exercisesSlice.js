@@ -8,6 +8,8 @@ const exercisesSlice = createSlice({
     bodyPart: "",
     exerciseDetail:{},
     exerciseVideos:[],
+    targetMuscleData:[],
+    equipmentMuscleData:[],
   },
 
   reducers: {
@@ -22,11 +24,20 @@ const exercisesSlice = createSlice({
     setExerciseDetail:(state,action)=>{
       state.exerciseDetail = action.payload;
     },
+
     setExerciseVideos:(state,action)=>{
       state.exerciseVideos = action.payload;
-    }
+    },
+
+    setTargetMuscleData:(state,action)=>{
+      state.targetMuscleData = action.payload;
+    },
+
+    setEquipmentMuscleData:(state,action)=>{
+      state.equipmentMuscleData= action.payload;
+    },
   },
 });
 
-export const { setExercises, setBodyPart,setExerciseDetail,setExerciseVideos } = exercisesSlice.actions;
+export const { setExercises, setBodyPart,setExerciseDetail,setExerciseVideos,setTargetMuscleData,setEquipmentMuscleData } = exercisesSlice.actions;
 export default exercisesSlice.reducer;
